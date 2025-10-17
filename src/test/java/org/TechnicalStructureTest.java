@@ -9,7 +9,10 @@ import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
 import com.tngtech.archunit.lang.ArchRule;
 
-@AnalyzeClasses(packagesOf = PruebaApp.class, importOptions = DoNotIncludeTests.class)
+@AnalyzeClasses(
+    packages = { "org.aop", "org.config", "org.domain", "org.management", "org.repository", "org.security", "org.service", "org.web" },
+    importOptions = DoNotIncludeTests.class
+)
 class TechnicalStructureTest {
 
     // prettier-ignore

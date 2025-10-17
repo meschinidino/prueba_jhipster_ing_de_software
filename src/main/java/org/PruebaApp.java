@@ -19,7 +19,12 @@ import org.springframework.core.env.Environment;
 import tech.jhipster.config.DefaultProfileUtil;
 import tech.jhipster.config.JHipsterConstants;
 
-@SpringBootApplication
+// Restrict component scanning to only application packages under org to avoid scanning the top-level 'org' package
+@SpringBootApplication(
+    scanBasePackages = {
+        "org.aop", "org.config", "org.domain", "org.management", "org.repository", "org.security", "org.service", "org.web",
+    }
+)
 @EnableConfigurationProperties({ LiquibaseProperties.class, ApplicationProperties.class })
 public class PruebaApp {
 
@@ -86,14 +91,14 @@ public class PruebaApp {
         }
         LOG.info(
             CRLFLogConverter.CRLF_SAFE_MARKER,
-            """
+            /*            """
 
             ----------------------------------------------------------
             \tApplication '{}' is running! Access URLs:
             \tLocal: \t\t{}://localhost:{}{}
             \tExternal: \t{}://{}:{}{}
             \tProfile(s): \t{}
-            ----------------------------------------------------------""",
+            ----------------------------------------------------------""",*/
             applicationName,
             protocol,
             serverPort,

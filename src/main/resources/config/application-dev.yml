@@ -19,6 +19,7 @@ logging:
     tech.jhipster: DEBUG
     org.hibernate.SQL: DEBUG
     org: DEBUG
+    javax.management.remote.rmi: WARN
 
 spring:
   devtools:
@@ -33,6 +34,7 @@ spring:
   liquibase:
     # Remove 'faker' if you do not want the sample data to be loaded automatically
     contexts: dev, faker
+    enabled: false
     url: jdbc:postgresql://localhost:5432/prueba
   mail:
     host: localhost
@@ -47,11 +49,20 @@ spring:
     password:
   thymeleaf:
     cache: false
+  docker:
+    compose:
+      enabled: false
+      lifecycle-management: none
 
 server:
   port: 8080
   # make sure requests the proxy uri instead of the server one
   forward-headers-strategy: native
+
+management:
+  health:
+    cassandra:
+      enabled: false
 
 # ===================================================================
 # JHipster specific properties
@@ -84,9 +95,9 @@ jhipster:
   logging:
     use-json-format: false # By default, logs are not in Json format
     logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
-      enabled: false
+      enabled: true
       host: localhost
-      port: 5000
+      port: 50000
       ring-buffer-size: 512
 # ===================================================================
 # Application specific properties
